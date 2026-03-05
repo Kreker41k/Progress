@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <div class="progress-layout">
+            <div class="progress" id="progressComponent">
+                <div class="progress__circle" id="progressCircle"></div>
+            </div>
+            <div class="controls">
+                <div class="control-value">
+                    <input type="number" id="valueInput" min="0" max="100" value="100" step="1">
+                    <label for="valueInput">Value</label>
+                </div>
+                <div class="control-checkboxes">
+                    <label class="toggle">
+                        <input type="checkbox" id="animateCheck">
+                        <span class="toggle__switch"></span>
+                        <span class="toggle__label">Animate</span>
+                    </label>
+                    <label class="toggle">
+                        <input type="checkbox" id="hideCheck">
+                        <span class="toggle__switch"></span>
+                        <span class="toggle__label">Hide</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

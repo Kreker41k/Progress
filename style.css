@@ -1,0 +1,212 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e9ecef;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+.app {
+    width: 100%;
+    max-width: 900px;
+    background: #f3f4f6;
+    padding: 32px;
+    border: 1px solid #dcdfe3;
+}
+
+.progress-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    height: 300px;
+}
+
+@media (min-width: 768px) {
+    .progress-layout {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 60px;
+    }
+}
+
+.progress {
+    --progress-value: 60;
+    --progress-color: #1f6feb;
+    --track-color: #e5e7eb;
+    --size: 160px;
+
+    --thickness: 4%;
+
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    position: relative;
+}
+
+.progress__circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient( from -0deg, var(--progress-color) calc(var(--progress-value) * 1%), var(--track-color) 0);
+    mask: radial-gradient(circle, transparent calc(50% - var(--thickness)), black calc(50% - var(--thickness) + 0.5%));
+    -webkit-mask: radial-gradient(circle, transparent calc(50% - var(--thickness)), black calc(50% - var(--thickness) + 0.5%));
+}
+
+.progress--animated {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.progress--hidden {
+    display: none;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    max-width: 320px;
+}
+
+.control-value {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.control-value label {
+    font-weight: 500;
+    color: #374151;
+    font-size: 16px;
+}
+
+.control-value input {
+    width: 54px;
+    height: 34px;
+    border: 2px solid #000000; 
+    border-radius: 999px;    
+    font-size: 14px;
+    text-align: center;
+    outline: none;
+    background: #ffffff;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.control-value input:focus {
+    border-color: #000000;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.control-checkboxes {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 14px;
+    color: #374151;
+}
+
+.toggle__label {
+    font-weight: 500;
+    color: #374151;
+    font-size: 16px;
+}
+
+.toggle input {
+    display: none;
+}
+
+.toggle__switch {
+    position: relative;
+    width: 54px;
+    height: 34px;
+    background: #d1d5db;
+    border-radius: 999px;
+    transition: background 0.2s;
+}
+
+.toggle__switch::before {
+    content: "";
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: white;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+.toggle input:checked + .toggle__switch {
+    background: #1f6feb;
+}
+
+.toggle input:checked + .toggle__switch::before {
+    transform: translateX(20px);
+}
+
+@media (max-width: 768px) {
+
+    .progress-layout {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+        width: 100%;
+        height: 600px;
+    }
+
+    .progress {
+        --size: 160px;
+        margin: 0 auto;
+    }
+
+    .controls {
+        width: 100%;
+        max-width: 160px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 0 auto;
+    }
+
+    .control-value {
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .control-checkboxes {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .toggle {
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+}
