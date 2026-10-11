@@ -1,0 +1,234 @@
+:root {
+    --primary-color: #0055ff;
+    --bg-color: #f8f9fa;
+    --track-color: #e9ecef;
+    --text-color: #000;
+    --switch-off: #e9ecef;
+    --switch-on: #0055ff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 320px;
+    background: #fff;
+    padding: 20px;
+}
+
+.progress-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    position: relative;
+}
+
+.progress-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 12px;
+    color: #000;
+    font-weight: bold;
+}
+
+.progress-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    margin-top: 20px;
+}
+
+.progress-block.hidden {
+    display: none;
+}
+
+.progress-circle-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.progress-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.progress-bg {
+    fill: none;
+    stroke: var(--track-color);
+    stroke-width: 10;
+}
+
+.progress-bar {
+    fill: none;
+    stroke: var(--primary-color);
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-dasharray: 314.159;
+    stroke-dashoffset: 314.159;
+    transition: stroke-dashoffset 0.3s ease;
+}
+
+.progress-block.animated .progress-circle-container {
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.controls-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 200px;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.control-group label {
+    font-size: 14px;
+    color: var(--text-color);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+input[type="number"] {
+    width: 60px;
+    padding: 6px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    font-size: 14px;
+    text-align: center;
+    outline: none;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+input[type="number"]:focus {
+    border-color: var(--primary-color);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--switch-off);
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+input:checked + .slider {
+    background-color: var(--switch-on);
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+@media (orientation: landscape) and (min-width: 568px) {
+    .app-container {
+        flex-direction: row;
+        max-width: 568px;
+        align-items: stretch;
+        padding: 0;
+        background: transparent;
+        box-shadow: none;
+        gap: 0;
+    }
+
+    .progress-wrapper {
+        flex: 1;
+        border-right: none;
+        background: #fff;
+        border-radius: 8px 0 0 8px;
+        padding: 40px 20px;
+    }
+
+    .controls-wrapper {
+        flex: 1;
+        background: #fff;
+        border-left: none;
+        border-radius: 0 8px 8px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+    }
+
+    .progress-label {
+        top: 20px;
+        left: 20px;
+    }
+
+    .progress-block {
+        margin-top: 0;
+    }
+}

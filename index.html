@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!--Блок прогресса -->
+        <div class="progress-wrapper">
+            <div class="progress-label">Progress</div>
+            <div id="progress-root" class="progress-block">
+                <div class="progress-circle-container">
+                    <svg class="progress-svg" viewBox="0 0 120 120">
+                        <!--Фоновый круг-->
+                        <circle class="progress-bg" cx="60" cy="60" r="50"></circle>
+                        <!--Круг прогресса-->
+                        <circle class="progress-bar" cx="60" cy="60" r="50"></circle>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <!--Панель управления-->
+        <div class="controls-wrapper">
+            <div class="controls">
+                <div class="control-group">
+                    <input type="number" id="value-input" min="0" max="100" value="60">
+                    <label for="value-input">Value</label>
+                </div>
+                <div class="control-group">
+                    <label class="switch">
+                        <input type="checkbox" id="animate-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <label for="animate-toggle" class="switch-label">Animate</label>
+                </div>
+                <div class="control-group">
+                    <label class="switch">
+                        <input type="checkbox" id="hide-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <label for="hide-toggle" class="switch-label">Hide</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
